@@ -2,7 +2,9 @@
   "gateway": {
     "bind": "lan",
     "controlUi": {
-      "allowedOrigins": ["https://openclaw-production-aafb.up.railway.app"]
+      "enabled": true,
+      "allowedOrigins": ["https://openclaw-production-aafb.up.railway.app"],
+      "dangerouslyAllowHostHeaderOriginFallback": true
     }
   }
 }

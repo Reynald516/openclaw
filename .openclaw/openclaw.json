@@ -3,7 +3,7 @@
     "bind": "lan",
     "controlUi": {
       "enabled": true,
-      "allowedOrigins": ["https://openclaw-production-aafb.up.railway.app"],
+      "allowedOrigins": ["*"],
       "dangerouslyAllowHostHeaderOriginFallback": true
     }
   }

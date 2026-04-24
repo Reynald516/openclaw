@@ -196,7 +196,7 @@ RUN ln -sf /app/openclaw.mjs /usr/local/bin/openclaw \
 ENV NODE_ENV=production
 
 RUN mkdir -p /home/node/.openclaw && \
-    printf '{"gateway":{"bind":"0.0.0.0","trustedProxies":"*","controlUi":{"allowedOrigins":["*"]}}}' \
+    printf '{"gateway":{"bind":"lan","trustedProxies":"*","controlUi":{"allowedOrigins":["*"]}}}' \
     > /home/node/.openclaw/openclaw.json && \
     chown -R node:node /home/node/.openclaw
     

@@ -196,12 +196,12 @@ RUN ln -sf /app/openclaw.mjs /usr/local/bin/openclaw \
 ENV NODE_ENV=production
 
 RUN mkdir -p /home/node/.openclaw && \
-    printf '{"gateway":{"bind":"lan","trustedProxies":"*","controlUi":{"allowedOrigins":["https://openclaw-production-aafb.up.railway.app"]}}}' \
+    printf '{"gateway":{"bind":"0.0.0.0","trustedProxies":"*","controlUi":{"allowedOrigins":["*"]}}}' \
     > /home/node/.openclaw/openclaw.json && \
     chown -R node:node /home/node/.openclaw
-
+    
 USER node
 
 HEALTHCHECK --interval=3m --timeout=10s --start-period=15s --retries=3 \
   CMD node -e "fetch('http://127.0.0.1:18789/healthz').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
-CMD ["node", "openclaw.mjs", "gateway", "--allow-unconfigured", "--bind", "lan"]
+CMD ["node", "openclaw.mjs", "gateway", "--allow-unconfigured", "--bind", "0.0.0.0"]
